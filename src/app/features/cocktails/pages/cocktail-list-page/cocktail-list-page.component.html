@@ -1,0 +1,41 @@
+<app-search-bar
+  (search)="onSearch($event)"
+  (random)="onRandom()"
+></app-search-bar>
+
+<div class="cards-container">
+  @if (!loading) { @for (cocktail of cocktails; track cocktail.idDrink) {
+  <p-card
+    (click)="navigateToDetails(cocktail.idDrink)"
+    class="cocktail-card"
+    @fadeIn
+  >
+    <ng-template pTemplate="header">
+      <img
+        [src]="cocktail.strDrinkThumb"
+        alt="Cocktail image"
+        class="cocktail-img"
+      />
+    </ng-template>
+
+    <div class="cocktail-name">{{ cocktail.strDrink }}</div>
+    <div class="cocktail-glass">{{ cocktail.strGlass }}</div>
+  </p-card>
+  } }@else {
+  <div class="cards-container">
+    @for (skeleton of skeletonArray; track $index) {
+    <div class="cocktail-card">
+      <p-skeleton height="150px" styleClass="mb-2"></p-skeleton>
+      <p-skeleton width="60%" height="1rem" styleClass="mb-1"></p-skeleton>
+      <p-skeleton width="40%" height="1rem"></p-skeleton>
+    </div>
+    }
+  </div>
+  }
+</div>
+
+<app-random-cocktail-modal
+  [visible]="randomModalVisible"
+  [cocktail]="randomCocktail"
+  (close)="randomModalVisible = false"
+/>

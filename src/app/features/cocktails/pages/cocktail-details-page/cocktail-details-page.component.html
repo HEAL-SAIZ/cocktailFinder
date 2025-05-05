@@ -1,0 +1,10 @@
+@if (!loading && cocktail) {
+<div class="details-container">
+  <app-cocktail-card
+    [cocktail]="cocktail"
+    [ingredients]="ingredients"
+  ></app-cocktail-card>
+</div>
+} @else{
+<div class="loading-container">Loading...</div>
+}

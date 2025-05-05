@@ -1,0 +1,16 @@
+<div class="search-bar">
+  <input
+    pInputText
+    [(ngModel)]="searchTerm"
+    placeholder="Enter cocktail name..."
+  />
+  <div class="buttons">
+    <button pButton icon="pi pi-search" (click)="onSearchClick()"></button>
+    <button
+      pButton
+      icon="pi pi-refresh"
+      (click)="onRandomClick()"
+      class="p-button-secondary"
+    ></button>
+  </div>
+</div>
